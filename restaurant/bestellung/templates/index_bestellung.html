@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extrahead %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bestellung.css' %}">
+    <script src="{% static 'js/counter.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+    <div class="section" style="padding-bottom:22em;">
+    <div class="container">
+      <section>
+        <h1 class="fw-bold">Hier kannst Du bestellen!</h1>
+      </section>
+    </div>
+
+    <div class="container">
+        <div class="row  row-body">
+            {% for product in products %}
+                <div class="col-md-6 col-sm">
+                    <div class="card">
+                        <img src="{% static product.img_path %}" class="card-img-top" alt="{{product.name}}">
+                        <div class="card-body">
+                            <h5 class="card-title name-header">{{product.name}}</h5>
+                            <h5 class="card-title name-header price" >{{product.price}}€</h5>
+                            <p class="card-text">{{product.description}}</p>
+                            <button class="btn btn-primary" id="minus">-</button>
+                            <h5 class="btn" style="margin-bottom: 0;">{{product.piece}}</h5>
+                            <button class="btn btn-primary" id="plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

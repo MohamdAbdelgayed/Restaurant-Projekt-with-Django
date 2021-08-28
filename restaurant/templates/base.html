@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang = "en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Los Pollos Hermanos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    {% block extrahead %}
+    {% endblock %}
+</head>
+<body>
+    <header class="section" style="background-color: #00c2ff;">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light" >
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/home/">
+                  <img src="{% static 'images/logo.png' %}" class="img-fluid" alt="logo">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/home/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/bestellung/">Bestellung</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/kontakt/">Kontakt</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer class="section" style="background-color: #3D444A;">
+      <div class="container">
+        <nav class="navbar-brand col-12">
+          <div class="row row-footer">
+            <div class="container-fluid col-lg-4 box-one">
+              <a class="navbar-brand" href="/home/">
+                <img src="{% static 'images/logo.png' %}" alt="logo" class="img-fluid img-footer">
+                <p class="address"> Breaking Bad 2<br>98353 Landau</p>
+              </a>
+          </div>
+          <div class=" col-lg-3 box-two "></div>
+          <div class="container-fluid col-lg-2  box-three">
+            <a class="navbar-brand" href="/termsOfService/">Terms of Service</a>
+          </div>
+          <div class="container-fluid col-lg-2 box-four">
+            <a class="navbar-brand" href="/privacyPolicy/">Privacy Policy</a>
+          </div>
+          </div>
+        </nav>
+      </div>
+    </footer>
+
+</body>
+</html>
+
+

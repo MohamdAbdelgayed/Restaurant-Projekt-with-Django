@@ -1,0 +1,28 @@
+
+section{
+    text-align: center;
+    font-size: 40px;
+    padding-top: 1.6em;
+}
+
+.card-img, .card-img-top{
+    object-fit: cover;
+    aspect-ratio: 1/.7;
+}
+
+.name-header{
+    display: inline-block;
+}
+
+.price{
+    padding-left: 2.5rem
+}
+
+.row-body>*{
+    margin: 1.2em 0 1.2em;
+}
+
+.card{
+    border: none;
+}
+
