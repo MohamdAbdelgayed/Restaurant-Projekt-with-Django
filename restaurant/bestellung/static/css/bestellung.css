@@ -26,3 +26,11 @@ section{
 .card{
     border: none;
 }
+
+@media (min-width: 555px) {
+
+    .pro{
+        flex: 2 50%;
+    }
+
+}

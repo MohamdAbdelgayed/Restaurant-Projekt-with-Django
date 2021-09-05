@@ -2,4 +2,4 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'index_kontakt.html')
+    return render(request, 'kontakt/index.html')

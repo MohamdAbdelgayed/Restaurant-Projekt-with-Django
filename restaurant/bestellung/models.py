@@ -12,5 +12,5 @@ class Product(models.Model):
     @property
     def total(self):
         total = self.piece * self.price
+        total = round(total, 2)
         return total
-

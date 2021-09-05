@@ -5,5 +5,5 @@ $(document).ready(function(){
         total = parseFloat((this).innerHTML);
         sum+= total;
     });
-     $('#summ').text(sum+' €')
+     $('#summ').text(sum.toFixed(2)+' €')
 });

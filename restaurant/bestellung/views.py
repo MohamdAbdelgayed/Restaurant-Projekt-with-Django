@@ -1,3 +1,4 @@
+from django.db.models.functions import Lower
 from django.shortcuts import render
 from .models import Product
 from django.http import JsonResponse
@@ -5,8 +6,8 @@ import json
 
 
 def index(request):
-    products = Product.objects.all()
-    return render(request, 'index_bestellung.html', {'products': products})
+    products = Product.objects.all().order_by('price')
+    return render(request, 'bestellung/index.html', {'products': products})
 
 
 def einkaufskorb(request):
@@ -34,5 +35,5 @@ def einkaufskorb(request):
 
     except json.decoder.JSONDecodeError:
 
-        cart_itm = Product.objects.filter(in_cart=True)
-        return render(request, 'update_item.html', {'cart_itm': cart_itm})
+        cart_itm = Product.objects.filter(in_cart=True).order_by(Lower('piece').desc())
+        return render(request, 'bestellung/einkaufskorb.html', {'cart_itm': cart_itm})

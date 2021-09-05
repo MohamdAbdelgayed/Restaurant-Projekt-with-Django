@@ -24,6 +24,24 @@
             return cookieValue;
         }
         const csrftoken = getCookie('csrftoken');
+        <!--session code, but it does not work yet-->
+         function getCookie1(name) {
+            var cookieArr = document.cookie.split(";");
+            for (var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i].split("=");
+                if(name == cookiePair[0].trim()){
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            return null;
+         }
+         var einkaufskorb = JSON.parse(getCookie('einkaufskorb'))
+         if(einkaufskorb == undefined){
+            einkaufskorb = {}
+            console.log('einkaufskorb was created')
+            document.cookie = 'einkaufskorb=' + JSON.stringify(einkaufskorb) + ";domain=;path=/"
+         }
+         console.log('einkaufskorb', einkaufskorb)
     </script>
     {% block extrahead %}
     {% endblock %}
@@ -33,7 +51,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light" >
             <div class="container-fluid">
-              <a class="navbar-brand" href="/home/">
+              <a class="navbar-brand" href="{% url 'home:index'%}">
                   <img src="{% static 'images/logo.png' %}" class="img-fluid" alt="logo">
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,13 +60,13 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/home/">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'home:index'%}">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/bestellung/">Bestellung</a>
+                    <a class="nav-link" href="{% url 'bestellung:index'%}">Bestellung</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/kontakt/">Kontakt</a>
+                    <a class="nav-link" href="{% url 'kontakt:index'%}">Kontakt</a>
                   </li>
                 </ul>
               </div>
@@ -65,17 +83,17 @@
         <nav class="navbar-brand col-12">
           <div class="row row-footer">
             <div class="container-fluid col-lg-4 box-one">
-              <a class="navbar-brand" href="/home/">
+              <a class="navbar-brand" href="{% url 'home:index'%}">
                 <img src="{% static 'images/logo.png' %}" alt="logo" class="img-fluid img-footer">
                 <p class="address"> Breaking Bad 2<br>98353 Landau</p>
               </a>
           </div>
           <div class=" col-lg-3 box-two "></div>
           <div class="container-fluid col-lg-2  box-three">
-            <a class="navbar-brand" href="/termsOfService/">Terms of Service</a>
+            <a class="navbar-brand" href="{% url 'tos:index'%}">Terms of Service</a>
           </div>
           <div class="container-fluid col-lg-2 box-four">
-            <a class="navbar-brand" href="/privacyPolicy/">Privacy Policy</a>
+            <a class="navbar-brand" href="{% url 'pp:index'%}">Privacy Policy</a>
           </div>
           </div>
         </nav>
