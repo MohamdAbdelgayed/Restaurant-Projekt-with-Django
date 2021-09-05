@@ -26,20 +26,11 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         }
     })
-/*
-    document.querySelectorAll('.update-cart').forEach(function(update_cart){
-        update_cart.onclick = function(){
-            var productId = this.dataset.product;
-            var action = this.dataset.action;
-
-            updateUserOrder(productId,action);
-        }
-    });
-*/
 });
 
 function updateUserOrder(productId,action){
-    fetch('/bestellung/update_item/', {
+    var url = '/bestellung/einkaufskorb/';
+    fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type':'application/json',
@@ -51,7 +42,6 @@ function updateUserOrder(productId,action){
         return response.json()
     })
     .then((data) => {
-        console.log('data:', data)
-        //location.reload()
+        console.log('data:', data);
     })
 }

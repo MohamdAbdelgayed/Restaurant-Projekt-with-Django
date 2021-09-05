@@ -1,0 +1,16 @@
+@media (max-width: 575px) {
+    .zuruck{
+        order:1;
+        margin-top: 1em;
+        }
+    .kasse{
+        order:0;
+        }
+}
+.table{
+    margin-top: 2em;
+}
+
+.price, #summ{
+    white-space: nowrap;
+}

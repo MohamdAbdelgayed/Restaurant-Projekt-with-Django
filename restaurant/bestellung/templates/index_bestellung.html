@@ -9,35 +9,42 @@
 
 
 {% block content %}
-    <div class="section" style="padding-bottom:22em;">
-    <div class="container">
-      <section>
-        <h1 class="fw-bold">Hier kannst Du bestellen!</h1>
-      </section>
-    </div>
+    <div class="section" style="padding-bottom:24em;">
+        <div class="container">
+          <section>
+            <h1 class="fw-bold">Hier kannst Du bestellen!</h1>
+          </section>
+        </div>
 
-    <div class="container">
-        <div class="row  row-body">
-            {% for product in products %}
-                <div class="col-md-6 col-sm">
-                    <div class="card">
-                        <img src="{% static product.img_path %}" class="card-img-top" alt="{{product.name}}">
-                        <div class="card-body">
-                            <h5 class="card-title name-header">{{product.name}}</h5>
-                            <h5 class="card-title name-header price" >{{product.price}}€</h5>
-                            <p class="card-text">{{product.description}}</p>
-                            <button class="btn btn-primary update-cart" data-product="{{product.id}}"
-                                    data-action="minus" id="minus">-</button>
-                            <h5 class="btn" style="margin-bottom: 0;">{{product.piece}}</h5>
-                            <button class="btn btn-primary update-cart" data-product="{{product.id}}"
-                                    data-action="plus" id="plus">+</button>
+        <div class="container">
+            <div class="row  row-body">
+                {% for product in products %}
+                    <div class="col-md-6 col-sm">
+                        <div class="card">
+                            <img src="{% static product.img_path %}" class="card-img-top" alt="{{product.name}}">
+                            <div class="card-body">
+                                <h5 class="card-title name-header">{{product.name}}</h5>
+                                <h5 class="card-title name-header price" >{{product.price}} €</h5>
+                                <p class="card-text">{{product.description}}</p>
+                                <button class="btn btn-primary update-cart" data-product="{{product.id}}"
+                                        data-action="minus" id="minus">-</button>
+                                <h5 class="btn" style="margin-bottom: 0;">{{product.piece}}</h5>
+                                <button class="btn btn-primary update-cart" data-product="{{product.id}}"
+                                        data-action="plus" id="plus">+</button>
+                            </div>
                         </div>
                     </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container" style="padding-top: 2em;">
+            <a href="/bestellung/einkaufskorb" class="weiter">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" type="button"> Weiter</button>
                 </div>
-            {% endfor %}
+            </a>
         </div>
     </div>
-</div>
 {% endblock %}
 
 

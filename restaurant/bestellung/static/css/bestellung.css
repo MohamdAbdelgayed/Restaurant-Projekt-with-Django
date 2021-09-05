@@ -15,7 +15,8 @@ section{
 }
 
 .price{
-    padding-left: 2.5rem
+    padding-left: 2.5rem;
+    white-space: nowrap;
 }
 
 .row-body>*{
@@ -25,4 +26,3 @@ section{
 .card{
     border: none;
 }
-

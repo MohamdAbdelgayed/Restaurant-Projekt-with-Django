@@ -9,7 +9,7 @@ def index(request):
     return render(request, 'index_bestellung.html', {'products': products})
 
 
-def updateItem(request):
+def einkaufskorb(request):
     try:
         data = json.loads(request.body)
         productId = data['productId']
@@ -23,9 +23,16 @@ def updateItem(request):
             if product.piece != 0:
                 product.piece = (product.piece - 1)
 
+        if product.piece > 0:
+            product.in_cart = True
+        else:
+            product.in_cart = False
+
         product.save()
 
-    except json.decoder.JSONDecodeError:
-        print("String could not be converted to JSON")
+        return JsonResponse('data', safe=False)
 
-    return JsonResponse('data', safe=False)
+    except json.decoder.JSONDecodeError:
+
+        cart_itm = Product.objects.filter(in_cart=True)
+        return render(request, 'update_item.html', {'cart_itm': cart_itm})

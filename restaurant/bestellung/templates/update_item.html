@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extrahead %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/einkaufskorb.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/sum.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+
+    {% if not cart_itm %}
+         <div class="section" style="padding-bottom:22em;">
+            <div class="container" style=" text-align: center; padding: 5em 0 5em">
+                <h3 class="fw-bold" >Dein Korb is leer.</h3>
+                <a  class="navbar-brand" href="/bestellung/">
+                    <h3 class="fw-bold">Geh auf die Bestellung Seite zurück</h3>
+                </a>
+            </div>
+        </div>
+    {% else %}
+    <div class="section" style="padding-bottom:24em;">
+    <table class="table container">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Preis</th>
+          <th scope="col">Stück</th>
+          <th scope="col">Gesamt</th>
+        </tr>
+      </thead>
+        <tbody>
+        {% for product in cart_itm %}
+            <tr>
+              <th scope="row">{{product.name}}</th>
+                  <td class="price">{{product.price}} €</td>
+                  <td>{{product.piece}}</td>
+                  <td class="total">{{product.total}} €</td>
+            </tr>
+        {% endfor %}
+            <tr style="border-bottom-style: hidden;">
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td id="summ"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm zuruck">
+                <a href="/bestellung/">
+                     <div class="d-grid gap-2 ">
+                       <button class="btn btn-primary" type="button">Zurück</button>
+                     </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm kasse">
+                <a href="#">
+                    <div class="d-grid gap-2 ">
+                        <button class="btn btn-primary" type="button">Zur Kasse</button>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% endif%}
+
+{% endblock %}
